@@ -1,5 +1,4 @@
 import sys
-import threading
 
 
 def main():
@@ -9,8 +8,7 @@ def main():
 
         # Wait for user input
         cmd = input()
-        t = threading.Thread(target=lambda: responseHandler(cmd))
-        t.start()
+        responseHandler(cmd)
 
 def responseHandler(incoming):
     cmd = incoming.split(" ")
