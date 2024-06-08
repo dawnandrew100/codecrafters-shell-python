@@ -36,7 +36,8 @@ def responseHandler(incoming):
         paths = PATH.split(":")
         for path in paths:
             if os.path.isfile(f"{path}/{cmd[0]}"):
-                print("HellO")
+                command = " ".join(cmd)
+                os.system(command)
         else:
             output = f"{cmd[0]}: command not found\n"
 
