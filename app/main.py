@@ -23,10 +23,7 @@ def responseHandler(incoming):
         else:
             PATH = str(os.environ.get("PATH"))
             paths = PATH.split(":")
-            print(PATH)
-            print(paths)
             for path in paths:
-                print(f"{path}/{cmd[1]}")
                 if os.path.isfile(f"{path}/{cmd[1]}"):
                     output = f"{cmd[1]} is {path}/{cmd[1]}\n"
             if output == "":
