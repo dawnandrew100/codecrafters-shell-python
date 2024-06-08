@@ -38,7 +38,7 @@ def responseHandler(incoming):
             if os.path.isfile(f"{path}/{cmd[0]}"):
                 command = " ".join(cmd)
                 os.system(command)
-                continue
+                output = "executed"
         if output == "":
             output = f"{cmd[0]}: command not found\n"
 
