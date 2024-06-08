@@ -34,12 +34,14 @@ def responseHandler(incoming):
     else:
         PATH = str(os.environ.get("PATH"))
         paths = PATH.split(":")
+        executed = False
         for path in paths:
             if os.path.isfile(f"{path}/{cmd[0]}"):
                 command = " ".join(cmd)
                 os.system(command)
-                output = "executed"
-        if output == "":
+                executed = True
+
+        if output == "" and executed == False:
             output = f"{cmd[0]}: command not found\n"
 
     sys.stdout.write(output)
