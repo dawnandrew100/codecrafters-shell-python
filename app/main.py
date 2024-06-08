@@ -1,4 +1,5 @@
 import sys
+import os
 
 def main():
     while True:
@@ -20,6 +21,11 @@ def responseHandler(incoming):
         if cmd[1] in commands:
             output = f"{cmd[1]} is a shell builtin\n"
         else:
+            PATH = os.environ.get("PATH")
+            paths = PATH.split(": ")
+            for path in paths:
+                if os.path.isfile(f"{path}/{cmd[1]}"):
+                                  output = f"{cmd[1]} is {path}/{cmd[1]}\n"
             output = f"{cmd[1]}: not found\n"
     elif cmd[0] == "exit" and cmd[1] == "0":
         status = 0
