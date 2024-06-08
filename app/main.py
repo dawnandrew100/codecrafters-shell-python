@@ -1,5 +1,6 @@
 import sys
 import os
+from os.path import isfile
 
 def main():
     while True:
@@ -24,7 +25,7 @@ def responseHandler(incoming):
             PATH = str(os.environ.get("PATH"))
             paths = PATH.split(":")
             for path in paths:
-                if os.path.isfile(f"{path}/{cmd[1]}"):
+                if isfile(f"{path}/{cmd[1]}"):
                     output = f"{cmd[1]} is {path}/{cmd[1]}\n"
             if output == "":
                 output = f"{cmd[1]}: not found\n"
@@ -36,7 +37,7 @@ def responseHandler(incoming):
         paths = PATH.split(":")
         executed = False
         for path in paths:
-            if os.path.isfile(f"{path}/{cmd[0]}"):
+            if isfile(f"{path}/{cmd[0]}"):
                 command = " ".join(cmd)
                 os.system(command)
                 executed = True
