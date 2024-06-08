@@ -1,7 +1,7 @@
 import sys
-import os
 from os.path import isfile
 from os import environ as env
+from os import system
 
 def main():
     while True:
@@ -40,7 +40,7 @@ def responseHandler(incoming):
         for path in paths:
             if isfile(f"{path}/{cmd[0]}"):
                 command = " ".join(cmd)
-                os.system(command)
+                system(command)
                 executed = True
 
         if output == "" and executed == False:
