@@ -1,7 +1,6 @@
 import sys
+import os
 from os.path import isfile
-from os import environ as env
-from os import system
 
 def main():
     while True:
@@ -23,24 +22,26 @@ def responseHandler(incoming):
         if cmd[1] in commands:
             output = f"{cmd[1]} is a shell builtin\n"
         else:
-            PATH = str(env.get("PATH"))
+            PATH = str(os.environ.get("PATH"))
             paths = PATH.split(":")
             for path in paths:
                 if isfile(f"{path}/{cmd[1]}"):
                     output = f"{cmd[1]} is {path}/{cmd[1]}\n"
             if output == "":
                 output = f"{cmd[1]}: not found\n"
+    elif cmd[0] == "pwd":
+        output = os.getcwd()
     elif cmd[0] == "exit" and cmd[1] == "0":
         status = 0
         sys.exit(status)
     else:
-        PATH = str(env.get("PATH"))
+        PATH = str(os.environ.get("PATH"))
         paths = PATH.split(":")
         executed = False
         for path in paths:
             if isfile(f"{path}/{cmd[0]}"):
                 command = " ".join(cmd)
-                system(command)
+                os.system(command)
                 executed = True
 
         if output == "" and executed == False:
