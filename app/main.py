@@ -16,7 +16,7 @@ def responseHandler(incoming):
     if cmd[0] == "echo":
         output = "".join(cmd[1:])
     else:
-        output = f"{cmd[0]} not found"
+        output = f"{cmd[0]}: command not found\n"
 
     sys.stdout.write(output)
     sys.stdout.flush()
