@@ -22,7 +22,7 @@ def responseHandler(incoming):
             output = f"{cmd[1]} is a shell builtin\n"
         else:
             PATH = str(os.environ.get("PATH"))
-            paths = PATH.split(": ")
+            paths = PATH.split(":")
             print(PATH)
             print(paths)
             for path in paths:
