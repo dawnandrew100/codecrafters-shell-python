@@ -15,6 +15,12 @@ def responseHandler(incoming):
 
     if cmd[0] == "echo":
         output = " ".join(cmd[1:]) + "\n"
+    elif cmd[0] == "type":
+        commands = ["echo","type","exit"]
+        if cmd[1] in commands:
+            output = f"{cmd[1]} is a shell builtin\n"
+        else:
+            output = f"{cmd[1]} not found"
     elif cmd[0] == "exit" and cmd[1] == "0":
         status = 0
         sys.exit(status)
