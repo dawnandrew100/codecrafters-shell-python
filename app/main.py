@@ -19,7 +19,7 @@ def responseHandler(incoming):
     if cmd[0] == "echo":
         output = "".join(cmd[1:])
     elif cmd[0] == "exit" and cmd[1] == "0":
-        sys.exit(0)
+        sys.exit()
     else:
         output = f"{cmd[0]}: command not found\n"
 
