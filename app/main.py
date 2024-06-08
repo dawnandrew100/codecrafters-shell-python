@@ -26,8 +26,8 @@ def responseHandler(incoming):
             for path in paths:
                 if os.path.isfile(f"{path}/{cmd[1]}"):
                                   output = f"{cmd[1]} is {path}/{cmd[1]}\n"
-                else:
-                    output = f"{cmd[1]}: not found\n"
+            if output == "":
+                output = f"{cmd[1]}: not found\n"
     elif cmd[0] == "exit" and cmd[1] == "0":
         status = 0
         sys.exit(status)
