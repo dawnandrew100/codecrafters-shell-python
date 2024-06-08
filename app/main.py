@@ -32,7 +32,10 @@ def responseHandler(incoming):
         status = 0
         sys.exit(status)
     else:
-        output = f"{cmd[0]}: command not found\n"
+        if os.path.isfile(cmd[0]):
+            os.system(cmd)
+        else:
+            output = f"{cmd[0]}: command not found\n"
 
     sys.stdout.write(output)
     sys.stdout.flush()
