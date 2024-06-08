@@ -6,14 +6,20 @@ def main():
     sys.stdout.flush()
 
     # Wait for user input
-    cmds = input()
-    responseHandler(cmds)
+    cmd = input()
+    responseHandler(cmd)
 
 def responseHandler(incoming):
-    cmds = incoming.split(" ")
+    cmd = incoming.split(" ")
+    output = ""
 
-    print(cmds)
-    print(cmds[0])
+    if cmd[0] == "echo":
+        output = "".join(cmd[1:])
+    else:
+        output = f"{cmd[0]} not found"
+
+    sys.stdout.write(output)
+    sys.stdout.flush()
 
 if __name__ == "__main__":
     main()
