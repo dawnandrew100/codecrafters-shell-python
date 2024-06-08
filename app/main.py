@@ -21,7 +21,7 @@ def responseHandler(incoming):
         if cmd[1] in commands:
             output = f"{cmd[1]} is a shell builtin\n"
         else:
-            PATH = os.environ.get("PATH")
+            PATH = str(os.environ.get("PATH"))
             paths = PATH.split(": ")
             for path in paths:
                 if os.path.isfile(f"{path}/{cmd[1]}"):
