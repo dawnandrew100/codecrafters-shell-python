@@ -14,7 +14,8 @@ def responseHandler(incoming):
     output = ""
 
     if cmd[0] == "echo":
-        output = "".join(cmd[1:])
+        output = " ".join(cmd[1:])
+        output += "\n"
     elif cmd[0] == "exit" and cmd[1] == "0":
         status = 0
         sys.exit(status)
