@@ -1,6 +1,7 @@
 import sys
 import os
 from os.path import isfile
+from os import environ as env
 
 def main():
     while True:
@@ -22,7 +23,7 @@ def responseHandler(incoming):
         if cmd[1] in commands:
             output = f"{cmd[1]} is a shell builtin\n"
         else:
-            PATH = str(os.environ.get("PATH"))
+            PATH = str(env.get("PATH"))
             paths = PATH.split(":")
             for path in paths:
                 if isfile(f"{path}/{cmd[1]}"):
@@ -33,7 +34,7 @@ def responseHandler(incoming):
         status = 0
         sys.exit(status)
     else:
-        PATH = str(os.environ.get("PATH"))
+        PATH = str(env.get("PATH"))
         paths = PATH.split(":")
         executed = False
         for path in paths:
