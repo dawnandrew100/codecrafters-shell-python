@@ -1,6 +1,5 @@
 import sys
 
-
 def main():
     while True:
         sys.stdout.write("$ ")
