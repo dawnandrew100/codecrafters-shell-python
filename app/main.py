@@ -1,13 +1,16 @@
 import sys
+import threading
 
 
 def main():
-    sys.stdout.write("$ ")
-    sys.stdout.flush()
+    while True:
+        sys.stdout.write("$ ")
+        sys.stdout.flush()
 
-    # Wait for user input
-    cmd = input()
-    responseHandler(cmd)
+        # Wait for user input
+        cmd = input()
+        t = threading.Thread(target=lambda: responseHandler(cmd))
+        t.start()
 
 def responseHandler(incoming):
     cmd = incoming.split(" ")
