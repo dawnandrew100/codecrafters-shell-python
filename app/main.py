@@ -32,9 +32,11 @@ def responseHandler(incoming):
         status = 0
         sys.exit(status)
     else:
-        if os.path.isfile(cmd[0]):
-            print("Hi")
-            os.system(cmd)
+        PATH = str(os.environ.get("PATH"))
+        paths = PATH.split(":")
+        for path in paths:
+            if os.path.isfile(f"{path}/{cmd[0]}"):
+                print("HellO")
         else:
             output = f"{cmd[0]}: command not found\n"
 
