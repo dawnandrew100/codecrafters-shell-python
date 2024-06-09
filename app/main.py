@@ -39,7 +39,7 @@ def responseHandler(incoming):
         try:
             os.chdir(path)
         except FileNotFoundError:
-            output = f"{cmd[1:]}: No such file or directory\n"
+            output = f"{"".join(cmd[1])}: No such file or directory\n"
     else:
         PATH = str(os.environ.get("PATH"))
         paths = PATH.split(":")
