@@ -56,15 +56,15 @@ def responseHandler(incoming):
     sys.stdout.write(output)
     sys.stdout.flush()
 
-def parsePath(pathtoparse):
-    if pathtoparse.startswith("/"):
-        return pathtoparse
-    if pathtoparse.startswith("~"):
+def parsePath(path):
+    if path.startswith("/"):
+        return path
+    if path.startswith("~"):
         homedir = os.environ.get("HOME")
         return homedir
     
     currentPath = os.getcwd()
-    return os.path.join(currentPath, pathtoparse)
+    return os.path.join(currentPath, path)
 
 if __name__ == "__main__":
     main()
