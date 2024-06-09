@@ -64,7 +64,7 @@ def parsePath(pathtoparse):
         return homedir
     
     currentPath = os.getcwd()
-    return currentPath+pathtoparse
+    return os.path.join(currentPath, pathtoparse)
 
 if __name__ == "__main__":
     main()
