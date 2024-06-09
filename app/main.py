@@ -59,7 +59,7 @@ def responseHandler(incoming):
 def parsePath(pathtoparse):
     if pathtoparse.startswith("/"):
         return pathtoparse
-    if pathtoparse.startswith(".."):
+    if pathtoparse.startswith("~"):
         homedir = os.environ.get("HOME")
         return homedir
     
