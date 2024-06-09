@@ -34,6 +34,12 @@ def responseHandler(incoming):
     elif cmd[0] == "exit" and cmd[1] == "0":
         status = 0
         sys.exit(status)
+    elif cmd[0] == "cd":
+        path = parsePath(cmd[1])
+        try:
+            os.chdir(path)
+        except FileNotFoundError:
+            output = f"{cmd[1:]}: No such file or directory\n"
     else:
         PATH = str(os.environ.get("PATH"))
         paths = PATH.split(":")
@@ -49,6 +55,16 @@ def responseHandler(incoming):
 
     sys.stdout.write(output)
     sys.stdout.flush()
+
+def parsePath(pathtoparse):
+    if pathtoparse.startswith("/"):
+        return pathtoparse
+    if pathtoparse.startswith(".."):
+        homedir = os.environ.get("HOME")
+        return homedir
+    
+    currentPath = os.getcwd()
+    return currentPath+pathtoparse
 
 if __name__ == "__main__":
     main()
